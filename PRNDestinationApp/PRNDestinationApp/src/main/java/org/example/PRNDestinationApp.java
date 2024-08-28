@@ -16,7 +16,7 @@ public class PRNDestinationApp {
 
     public static void main(String[] args) {
         if (args.length != 2) {
-            System.out.println("Usage: java -jar PRNDestinationApp.jar <PRN Number> <Path to JSON file>");
+            System.out.println("Running");
             return;
         }
 
@@ -24,17 +24,13 @@ public class PRNDestinationApp {
         String jsonFilePath = args[1];
 
         try {
-            // Parse the JSON file and get the value of "destination"
             String destinationValue = getDestinationValue(jsonFilePath);
 
-            // Generate a random 8-character alphanumeric string
             String randomString = generateRandomString(8);
 
-            // Concatenate the values and compute the MD5 hash
             String concatenatedString = prnNumber + destinationValue + randomString;
             String md5Hash = computeMD5Hash(concatenatedString);
 
-            // Output the result
             System.out.println(md5Hash + ";" + randomString);
         } catch (Exception e) {
             e.printStackTrace();
